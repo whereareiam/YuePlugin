@@ -1,0 +1,12 @@
+{
+  "name": "YueModule",
+  "version": "0.0.1",
+  "authors": [
+    "whereareiam"
+  ],
+  "supportedVersions": [
+    "dev",
+    "^(?:0\\.0\\.[2-9]|0\\.0\\.[1-9]\\d+|0\\.[1-9]\\d*\\.\\d+|[1-9]\\d*\\.\\d+\\.\\d+)(?:-[\\w.]+)?(?:\\+[\\w.]+)?$"
+  ],
+  "main": "me.whereareiam.yue.module.template.Module"
+}
