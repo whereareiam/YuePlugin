@@ -6,8 +6,8 @@ allprojects {
     apply(plugin = "java")
 
     tasks.withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_21.toString()
-        targetCompatibility = JavaVersion.VERSION_21.toString()
+        sourceCompatibility = JavaVersion.VERSION_23.toString()
+        targetCompatibility = JavaVersion.VERSION_23.toString()
     }
 }
 
@@ -17,20 +17,19 @@ subprojects {
         mavenLocal()
     }
 
-    if (project.name != "yuemodule-common-api") {
+    if (project.name != "yueplugin-common-api") {
         dependencies {
-            "compileOnly"(project(":yuemodule-common-api"))
+            "compileOnly"(project(":yueplugin-common-api"))
 
             "compileOnly"(rootProject.libs.lombok)
             "annotationProcessor"(rootProject.libs.lombok)
         }
     }
 
-    if (project.name != "yue-bootstrap") {
-        dependencies {
-            "compileOnly"(rootProject.libs.yue)
-            "compileOnly"(rootProject.libs.spring.boot)
-            "compileOnly"(rootProject.libs.jda)
-        }
+    dependencies {
+        "compileOnly"(rootProject.libs.yue)
+        "compileOnly"(rootProject.libs.spring.boot)
+        "compileOnly"(rootProject.libs.pf4j.spring)
+        "compileOnly"(rootProject.libs.jda)
     }
 }

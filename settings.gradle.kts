@@ -1,6 +1,6 @@
-rootProject.name = "YueModule"
+rootProject.name = "YuePlugin"
 
-include(":yuemodule-adapter-config")
-include(":yuemodule-common-api")
-include(":yuemodule-bootstrap")
-include(":yuemodule-common")
+include(":yueplugin-adapter-config")
+include(":yueplugin-common-api")
+include(":yueplugin-bootstrap")
+include(":yueplugin-common")

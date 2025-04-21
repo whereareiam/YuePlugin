@@ -1,0 +1,11 @@
+{
+  "name": "YuePlugin",
+  "version": "0.0.1",
+  "authors": [
+    "whereareiam"
+  ],
+  "requires": "*",
+  "dependencies": [],
+  "license": "MIT",
+  "entrypoint": "me.whereareiam.myplugin.MyPlugin"
+}
