@@ -5,7 +5,6 @@ import me.whereareiam.myplugin.api.model.config.PluginMessages;
 import me.whereareiam.myplugin.api.model.config.PluginSettings;
 import me.whereareiam.yue.api.output.config.ConfigurationManager;
 import me.whereareiam.yue.api.output.config.DefaultConfig;
-import org.pf4j.PluginWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -19,20 +18,6 @@ public class ConfigConfiguration {
 	@Bean
 	public PluginSettings settings(PluginSettingsProvider pluginSettingsProvider) {
 		return pluginSettingsProvider.get();
-	}
-
-	@Bean
-	@Qualifier("pluginPath")
-	public Path pluginPath(@Qualifier("pluginsPath") Path pluginsPath,
-	                       PluginWrapper pluginWrapper) {
-		Path pluginPath = pluginsPath.resolve(pluginWrapper.getPluginId());
-
-		if (!pluginPath.toFile().exists()) {
-			boolean created = pluginPath.toFile().mkdirs();
-			if (!created) throw new RuntimeException("Failed to create plugin directory");
-		}
-
-		return pluginPath;
 	}
 
 	@Bean

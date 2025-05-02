@@ -5,37 +5,41 @@ import me.whereareiam.yue.api.model.config.Commands;
 import me.whereareiam.yue.api.output.config.ConfigurationLoader;
 import me.whereareiam.yue.api.output.plugin.YuePlugin;
 import me.whereareiam.yue.api.output.service.CommandService;
-import org.pf4j.PluginWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 
 import java.nio.file.Path;
 
-public class MyPlugin extends YuePlugin {
-	@Autowired
-	private ConfigurationLoader configLoader;
-	@Autowired
-	private CommandService commandService;
-	@Autowired
-	private Path pluginPath;
+public class MyPlugin implements YuePlugin {
+	private final ApplicationContext ctx;
+	private final ConfigurationLoader configLoader;
+	private final CommandService commandService;
+	private final Path pluginPath;
 
-	public MyPlugin(PluginWrapper wrapper) {
-		super(wrapper);
+	@Autowired
+	public MyPlugin(
+			ApplicationContext ctx,
+			ConfigurationLoader configLoader,
+			CommandService commandService,
+			@Qualifier("pluginPath") Path pluginPath
+	) {
+		this.ctx = ctx;
+		this.configLoader = configLoader;
+		this.commandService = commandService;
+		this.pluginPath = pluginPath;
 	}
 
 	@Override
-	public void start() {
-		super.start();
-
+	public void onLoad() {
 		commandService.register(
-				getApplicationContext(),
+				ctx,
 				configLoader.load(pluginPath.resolve("commands"), Commands.class, new PluginCommandsTemplate())
 		);
 	}
 
 	@Override
-	public void stop() {
-		super.stop();
-
+	public void onUnload() {
 		commandService.unregister("example");
 	}
 }

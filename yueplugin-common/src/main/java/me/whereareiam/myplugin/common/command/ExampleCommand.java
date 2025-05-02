@@ -1,8 +1,8 @@
 package me.whereareiam.myplugin.common.command;
 
-import me.whereareiam.yue.api.StyleKit;
 import me.whereareiam.yue.api.annotation.Command;
 import me.whereareiam.yue.api.output.CommandBase;
+import me.whereareiam.yue.api.style.StyleKit;
 import me.whereareiam.yue.api.util.Translatable;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import org.springframework.stereotype.Component;
