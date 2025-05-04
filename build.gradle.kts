@@ -17,9 +17,9 @@ subprojects {
         mavenLocal()
     }
 
-    if (project.name != "yueplugin-common-api") {
+    if (project.name != "yuiplugin-common-api") {
         dependencies {
-            "compileOnly"(project(":yueplugin-common-api"))
+            "compileOnly"(project(":yuiplugin-common-api"))
 
             "compileOnly"(rootProject.libs.lombok)
             "annotationProcessor"(rootProject.libs.lombok)
@@ -27,7 +27,7 @@ subprojects {
     }
 
     dependencies {
-        "compileOnly"(rootProject.libs.yue)
+        "compileOnly"(rootProject.libs.yui)
         "compileOnly"(rootProject.libs.spring.boot)
         "compileOnly"(rootProject.libs.jda)
     }
