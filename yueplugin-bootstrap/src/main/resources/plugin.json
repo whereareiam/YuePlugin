@@ -2,6 +2,7 @@
   "id": "yueplugin",
   "name": "YuePlugin",
   "version": "0.0.1",
+  "dependencies": [],
   "authors": [
     "whereareiam"
   ],
