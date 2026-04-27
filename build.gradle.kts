@@ -1,34 +1,12 @@
-defaultTasks("build", "shadowJar")
-
-allprojects {
-    version = (System.getenv("VERSION") ?: "dev")
-
-    apply(plugin = "java")
-
-    tasks.withType<JavaCompile> {
-        sourceCompatibility = JavaVersion.VERSION_23.toString()
-        targetCompatibility = JavaVersion.VERSION_23.toString()
-    }
+plugins {
+    base
 }
 
-subprojects {
-    repositories {
-        mavenCentral()
-        mavenLocal()
-    }
+defaultTasks("build", "pluginJar")
 
-    if (project.name != "yuiplugin-common-api") {
-        dependencies {
-            "compileOnly"(project(":yuiplugin-common-api"))
-        }
-    }
+tasks.register("pluginJar") {
+    group = "build"
+    description = "Builds the shaded YuiPlugin runtime jar."
 
-    dependencies {
-        "compileOnly"(rootProject.libs.yui)
-        "compileOnly"(rootProject.libs.spring.boot)
-        "compileOnly"(rootProject.libs.jda)
-
-        "compileOnly"(rootProject.libs.lombok)
-        "annotationProcessor"(rootProject.libs.lombok)
-    }
+    dependsOn(":yuiplugin-bootstrap:shadowJar")
 }
